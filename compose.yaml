@@ -1,0 +1,25 @@
+services:
+  login:
+    image: maheshg98/my-login-app:v1
+    ports:
+      - '4545:8080'
+    networks:
+      - my-cust-bridge
+    
+
+  database:
+    image: mysql:8
+    ports:
+      - '3306:3306
+    networks:
+      - my-cust-bridge
+    volumes:
+      - 'db-volm:/var/lib/mysql'
+
+
+networks:
+  my-cust-bridge:
+    name: my-cust-bridge
+volumes:
+  db-volm:
+    name: db-volm
